@@ -1,0 +1,31 @@
+{% extends 'sidebar.html' %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    {% block body %}
+
+    <center>
+            <h1 style="background-color: powderblue; padding-top: 28px; padding-bottom: 28px;">Vehicle List</h1>
+            {% if user.is_authenticated %}
+            {% if user.is_superuser %}
+            <a href="{% url 'vehicle_create' %}" style="background-color: chartreuse; color: white; text-decoration: none; font-size: 30px; padding-left: 30px; padding-right: 30px; padding-top: 7px; padding-bottom: 7px;">Add Vehicle</a>
+            {% endif %}
+            {% endif %}
+            <ul style="list-style-position: inside;">
+                {% for vehicle in vehicles %}
+                <li style="margin-top: 5px; margin-bottom: 5px;"><a href="{% url 'vehicle_detail' vehicle.pk %}">{{ vehicle.vehicle_number }}</a></li>
+                {% endfor %}
+            </ul>
+    </center>
+    {% endblock %}
+
+
+</body>
+
+</html>

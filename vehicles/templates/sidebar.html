@@ -1,0 +1,26 @@
+{%load static%}
+<link rel="stylesheet" href="{%static 'css/style.css' %}">
+
+<div class="side">
+
+    {% if user.is_authenticated %}
+    <h2><a href="{% url 'logout' %}">Logout</a></h2>
+    <h2><a href="{% url 'vehicle_list' %}">Vehicle List</a></h2>
+   
+    {%else%}
+
+    <h2><a href="{% url 'register' %}">Register</a></h2>
+
+    {%endif%}
+
+    
+    <h2><a href="{% url 'aboutus' %}">AboutUs</a></h2>
+   
+</div>
+
+<div class="main">
+
+    {%block body%}
+    {%endblock%}
+
+</div>

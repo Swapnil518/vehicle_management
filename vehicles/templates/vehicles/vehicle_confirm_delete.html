@@ -1,0 +1,26 @@
+{% extends 'sidebar.html' %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    {% block body %}
+
+    <center>
+        <h1 style="background-color: tomato; padding-top: 28px; padding-bottom: 28px;">Confirm Delete</h1>
+        <p>Are you sure you want to delete the vehicle "{{ vehicle.vehicle_number }}"?</p>
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit" style="background-color: red; color: white; border:0px; padding-left: 15px; padding-right: 15px; padding-top: 5px; padding-bottom: 5px; margin-left: 30px; margin-right: 30px; margin-top: 20px;">Confirm</button>
+            <a href="{% url 'vehicle_list' %}"><button type="button" style="background-color: green; color: white; border:0px; padding-left: 15px; padding-right: 15px; padding-top: 5px; padding-bottom: 5px; margin-left: 30px; margin-right: 30px; margin-top: 20px;">No</button></a>
+        </form>
+    </center>
+    {% endblock %}
+
+</body>
+
+</html>

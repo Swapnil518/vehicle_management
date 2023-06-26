@@ -1,0 +1,49 @@
+{% extends 'sidebar.html' %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div class="container">
+        {% block body %}
+        <center>
+        <h1 style="background-color: powderblue; padding-top: 28px; padding-bottom: 28px;">Vehicle Detail</h1>
+
+        <table style="margin: 30px;">
+            <tr>
+                <td>Number:</td>
+                <td>{{ vehicle.vehicle_number }}</td>
+            </tr>
+            <tr>
+                <td>Type:</td>
+                <td>{{ vehicle.vehicle_type }}</td>
+            </tr>
+            <tr>
+                <td>Model:</td>
+                <td>{{ vehicle.vehicle_model }}</td>
+            </tr>
+            <tr>
+                <td>Description:</td>
+                <td>{{ vehicle.vehicle_description }}</td>
+            </tr>
+        </table>
+
+        {% if user.is_authenticated %}
+        {% if user.is_superuser or user.is_staff %}
+        <a href="{% url 'vehicle_update' vehicle.pk %}" style="background-color: gold; color: black; text-decoration: none; padding-left: 15px; padding-right: 15px; padding-top: 5px; padding-bottom: 5px; margin-left: 30px; margin-right: 30px;" role="button">Edit</a>
+        {% endif %}
+        {% if user.is_superuser %}
+        <a href="{% url 'vehicle_delete' vehicle.pk %}" style="background-color: red; color: white; text-decoration: none; padding-left: 15px; padding-right: 15px; padding-top: 5px; padding-bottom: 5px; margin-left: 30px; margin-right: 30px;" role="button">Delete</a>
+        {% endif %}
+        {% endif %}
+        {% endblock %}
+    </div>
+
+</center>
+</body>
+
+</html>
